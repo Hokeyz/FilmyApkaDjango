@@ -1,0 +1,42 @@
+body {
+
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 1920px 1080px;
+    background-attachment: fixed;
+}
+.card{
+    position: relative;
+    top: 10rem;
+    background-color: #edf5ff;
+
+}
+
+
+
+
+
+.film-plakat {
+    width: 15px;
+    float: left;
+
+
+}
+
+
+div.card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle
+
+    }
+
+div.card-body {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+
+    }

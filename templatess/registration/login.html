@@ -1,0 +1,36 @@
+
+{% extends 'glowny.html' %}
+
+{% load static %}
+
+
+{% load bootstrap %}
+
+{% block tytul %} Logowanie {% endblock %}
+
+{% block strona %}
+ <body style="background-image: url('{%static 'C:\Users\dziob\PycharmProjects\djangoProject\moje_media\jumbotron.jpg'%}');">
+
+
+
+
+    <div style="text-align: center;">
+
+    <div class="card" style="width: 26rem;">
+        <div class="card-body">
+         <h5 class="card-title">Zaloguj sie</h5>
+            <form method="post">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <p></p>
+         <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-primary">Zaloguj <i class="fa-solid fa-right-to-bracket"></i></button>
+         </div>
+            </form>
+        </div>
+    </div>
+
+
+    </div>
+ </body>
+{% endblock %}

@@ -1,0 +1,80 @@
+
+{% extends 'glowny.html' %}
+{% load static %}
+{% block tytul %} Lista filmów {% endblock %}
+{% block strona %}
+
+        <div style="text-align: center;">
+        <div class="jumbotron">
+
+
+            {% if user.is_authenticated %}
+                    <h1 class="display-4">Witaj  {{ user.username }} !</h1>
+                    <a href="{% url 'logout' %}" class="btn btn-success">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+            {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-success">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+            {% endif %}
+
+
+        </div>
+
+
+
+    <hr>
+
+    <a href="{% url 'nowy_film' %}" class="btn btn-primary">Dodaj nowy film <i class="fa-solid fa-plus"></i></a>
+      <p></p>
+
+    <body class="tlo" style="background-image: url('{%static 'C:\Users\dziob\PycharmProjects\djangoProject\moje_media\star.jpg'%}');">
+
+
+
+    {% if filmy|length == 0  %}
+        <h2>Brak filmów</h2>
+    {% else %}
+     <!--   <h2>Ilość filmów w DB : {{ filmy|length }}</h2> >-->
+
+
+    {% for film in filmy %}
+            <div class="card" style="width: 50rem ; height: 20rem">
+            <div class="card-body">
+                <div style="float: left;">
+                <img src="/media/{{ film.plakat }}" class="film-plakat" style="width: 200px">
+                </div>
+                    <div class="row">
+                         <div class="col-9">
+                             <div style="text-align: justify;">
+                            <h4 class="card-title">{{ film }}</h4>
+                             </div>
+                             <p></p>
+                         </div>
+                     <div class="col-3">
+                         <div style="text-align: justify;">
+                        <a href="{% url 'edytuj_film' film.id %}"><i class="fa-regular fa-2x fa-pen-to-square"></i></a>
+                        <a href="{% url 'usun_film' film.id %}"><i class="fa-solid fa-2x fa-trash"></i></a>
+                         </div>
+                     </div>
+
+                </div>
+
+            <div class="row">
+                    <div style="text-align: justify;">
+                <p></p>
+                <h6 class="card-text">{{ film.opis }}</h6>
+                <p></p>
+                <h7 class="card-text"> Premiera : {{ film.premiera }}</h7>
+                        <p></p>
+                <h7 class="card-text"> Ocena  : {{ film.imdb_rating }}</h7>
+                    </div>
+
+
+            </div>
+        </div>
+            </div>
+
+    </body>
+    {% endfor %}
+       {% endif %}
+{% endblock %}
+
+</div>
